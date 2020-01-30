@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+</head>
+<body>
+Hej
+<div style="width:60%">
+      <canvas id="myE4Chart" width="400" height="400"></canvas>
+      </div>
+      <script>
+      var ctx = document.getElementById('myE4Chart').getContext('2d');
+      var scatterChart = new Chart(ctx, {
+          type: 'scatter',
+          data: {
+        	  datasets: [{
+                  label: 'Scatter Made',
+                  data: [{
+                      x: 0,
+                      y: 0
+                  }],
+                  pointBackgroundColor: ["#FF0000", "#4287f5", "#14c732", "#f2ef22", "#f20ac8"],
+                  pointBorderColor: ['#FF0000', '#FF0000', '#FF0000', '#FF0000', '#FF0000'],
+                  pointRadius: 7.5,
+              }]
+          }
+      })
+      window.setInterval( 
+    		  addData, 500)
+       window.onload = function() {
+          console.log("Hello console world");
+          //alert("Hello alert world... please work");
+      }
+      
+      function addData() {
+    	  var sc = scatterChart;
+    	  console.log("imma give U sum mfing data!");
+    	  var ranx = Math.floor(Math.random() * 10);
+    	  var rany = Math.floor(Math.random() * 10);
+    	  console.log(scatterChart.config.data.datasets[0].data);
+    	  //sc.config.data.datasets.data.push({x: ranx, y: rany});
+      }
+    	  
+      </script>
+
+</body>
+</html>

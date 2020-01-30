@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+Hej
+<div style="width:60%">
+      <canvas id="myE4Chart" width="400" height="400"></canvas>
+      </div>
+      <script>
+      var ctx = document.getElementById('myE3Chart').getContext('2d');
+      var scatterChart = new Chart(ctx, {
+          type: 'scatter',
+          data: {}
+      })
+      window.setInterval( {colsole.log("Hej")}, 500)
+       window.onload = function() {
+          console.log("Hello console world");
+          //alert("Hello alert world... please work");
+      }
+      </script>
+
+</body>
+</html>

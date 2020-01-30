@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+
+  <head>
+    <title>Scatter Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <style>
+      canvas {
+	  -moz-user-select: none;
+	  -webkit-user-select: none;
+	  -ms-user-select: none;
+      }
+    </style>
+    <script>
+      function createChart() {
+	  var ctx = document.getElementById('myChart').getContext('2d');
+	  var scatterChart = new Chart(ctx, {
+	      type: 'scatter',
+	      data: {
+		  datasets: [{
+		      label: 'Scatter Dataset',
+		      data: [{
+			  x: -10,
+			  y: 0
+		      }, {
+			  x: 0,
+			  y: 2
+		      }, {
+			  x: 10,
+			  y: -1
+		      }],
+		      pointBackgroundColor: ["#000000","#000000","#000000"],
+		      pointBorderColor: '#000000',
+		      pointRadius: 5,
+
+		      // Adding lines
+		      fill: false,
+		      tension: 0,
+		      showLine: true,
+
+		      // Line color and width
+		      borderColor: 'red',
+		      borderWidth: 3,
+		  }]
+	      },
+	      options: {
+		  scales: {
+		      xAxes: [{
+			  type: 'linear',
+			  position: 'bottom'
+		      }]
+		  },
+	      }
+	  });
+	  return scatterChart;
+      };
+
+      function addPoint() {
+	  var x = window.scatterChart.data.datasets[0].data.length + 10;
+	  var y = Math.random();
+	  window.scatterChart.data.datasets[0].data.push({ x:x, y:y });
+	  scatterChart.data.datasets[0].pointBackgroundColor.push("#FF0000");
+	  window.scatterChart.update();
+      };
+
+      var counter = 0;
+      function timerTick() {
+	  counter = counter + 1;
+	  console.log("Logging from timerTick : " + counter);
+	  if(counter>10) {
+	      clearInterval(window.timer);
+	  }
+      };
+      
+      window.onload = function() {
+	  console.log("Create chart BEGIN");
+	  window.scatterChart = createChart();
+	  console.log("Create chart DONE");
+
+	  // Adding new point to graph
+	  addPoint();
+
+	  window.timer = window.setInterval(timerTick, 1000);
+      }
+    </script>
+  </head>
+
+  <body>
+    <div style="width:60%">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <button onclick="addPoint()">Click me</button> 
+  </body>
+
+</html>
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+</head>
+<body>
+
+<div style="width:60%">
+      <canvas id="myE4Chart" width="400" height="400"></canvas>
+      <button onclick="add10Points()">Give me 10 points</button>
+      <button onclick="remove10Points()">Remove 10 points</button>
+      <button onclick="removeAllPoints()">Remove all points</button>
+      <button onclick="toggleLineColour()">Toggle Colour</button> 
+      </div>
+      <script>
+     
+      var ctx = document.getElementById('myE4Chart').getContext('2d');
+      var scatterChart = new Chart(ctx, {
+          type: 'scatter',
+          data: {
+        	  datasets: [{
+                  label: 'Scatter Made',
+                  data: [{
+                      x: 0,
+                      y: 0
+                  }],
+                  pointBackgroundColor: ["#FF0000"],
+                  pointBorderColor: ['#FF0000'],
+                  pointRadius: 7.5,
+              }]
+          }
+      })
+     
+      
+      function add10Points() {
+    	  console.log("imma give U sum mfing data!");
+    	  console.log(scatterChart.config.data.datasets[0].data);
+    	  for (var i = 0; i < 10; i++) {
+    		  console.log(i);
+    		  var rx =randomizePoint();
+    		  var ry =randomizePoint();
+    		  console.log(rx);
+    		  console.log(ry);
+    		  scatterChart.config.data.datasets[0].data.push({x: randomizePoint(), y: randomizePoint()});
+    	  }
+    	  console.log(scatterChart.config.data.datasets[0].data);
+    	  scatterChart.update();
+      }
+      
+      function randomizePoint() {
+    	  return Math.floor(Math.random() * 20);
+      }
+    	  
+      </script>
+
+
+</body>
+</html>

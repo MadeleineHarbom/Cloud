@@ -1,0 +1,7 @@
+package made;
+
+import java.util.HashMap;
+
+public class Storage {
+	public static HashMap<String, String> users = new HashMap<>();
+}

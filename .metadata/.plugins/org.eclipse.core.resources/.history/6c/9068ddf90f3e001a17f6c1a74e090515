@@ -1,0 +1,83 @@
+package made;
+
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+
+/**
+ * Servlet implementation class LoginServlet
+ */
+@WebServlet(name = "login", urlPatterns = "/login")
+public class LoginServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LoginServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.print("LoninServlet, doGet");
+		System.out.print("\nSession: " + request.getSession());
+		if (request.getSession() != null) {
+			System.out.print("\nTrue");
+		}
+		else {
+			System.out.print("\nFalse");
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
+		dispatcher.forward(request, response);
+		//response.sendRedirect("Login.jsp");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userID, password;
+		
+		userID = request.getParameter("userID");
+		password = request.getParameter("password");
+		System.out.print(userID);
+		System.out.print(password);
+		
+		LoginService loginService = new LoginService();
+		boolean result = loginService.authenticate(userID, password);
+		System.out.print("\n"+result);
+		
+		if (result) {
+			User user = loginService.getUser(userID);
+			
+			System.out.print("Success");
+			
+			System.out.print("\n Login " + user.getUserID());
+			System.out.print("\n LogName " + user.getUserName());
+			request.getSession().setAttribute("user", user);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("Success.jsp");//Her ved ikke browseren at den bliver sendt til en ny jsp
+			dispatcher.forward(request, response); //success.jsp får samme req og res som denne servlet
+			return; //prøv at slette
+			
+		}
+		else {
+			System.out.print("Fail");
+			response.sendRedirect("Fail.jsp"); //client side. Giver disse instruktioner til broweser
+			return; //prøv at slettre
+			
+		}
+	}
+
+}

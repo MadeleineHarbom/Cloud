@@ -1,0 +1,6 @@
+1577701801289	Rename type 'Controller'
+1577704622152	Rename local variable 'controller'
+1577705487063	Delete element
+1577705513591	Move compilation unit
+1577708667399	Rename field 'userID'
+1577708921145	Rename method 'getUserName'

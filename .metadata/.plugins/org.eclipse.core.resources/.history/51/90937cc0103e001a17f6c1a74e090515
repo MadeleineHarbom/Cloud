@@ -1,0 +1,31 @@
+package made;
+
+public class User {
+	private String userRLName;
+	private String userLoginName;
+	
+	public User(String userLoginName, String userName) {
+		
+		this.userLoginName = userLoginName;
+		this.userRLName = userName;
+	}
+	
+	public String getUserName() {
+		return userRLName;
+	}
+	public void setUserRLName(String userName) {
+		this.userRLName = userName;
+	}
+	public String getUserRLName() {
+		return userLoginName;
+	}
+	public void setLoginNamw(String userID) {
+		this.userLoginName = userID;
+	}
+	
+	public String toString() {
+		return  this.userRLName + " " + this.userLoginName;
+	}
+	
+
+}

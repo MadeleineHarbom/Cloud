@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+  <head>
+    <title>Scatter Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <style>
+      canvas {
+          -moz-user-select: none;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="width:60%">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var scatterChart = new Chart(ctx, {
+          type: 'scatter',
+          data: {
+              datasets: [{
+                  label: 'Scatter Dataset',
+                  data: [{
+                      x: -10,
+                      y: 0
+                  }, {
+                      x: 0,
+                      y: 10
+                  }, {
+                      x: 10,
+                      y: 5
+                  }],
+                  pointBackgroundColor: ["#FF0000","#00FF00","#0000FF"],
+                  pointBorderColor: ['#FF0000', '#00FF00', '#0000FF'],
+                  pointRadius: 10,
+              }]
+          },
+          options: {
+              scales: {
+                  xAxes: [{
+                      type: 'linear',
+                      position: 'bottom'
+                  }]
+              }
+          }
+      });
+
+      window.onload = function() {
+          console.log("Hello console world");
+          alert("Hello alert world");
+      }
+    </script>
+  </body>
+
+</html>
+
+

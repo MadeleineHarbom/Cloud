@@ -1,0 +1,103 @@
+/* div-elementer med id #error starter med at være usynlige medmindre der vises fejl */
+#error {
+   display:none;
+}
+
+/* tabel for Trips & Users i admin-sektionen */
+.crud-table {
+    background-color:#808080;
+}
+
+/* align icons */
+.inner-addon { 
+    position: relative; 
+}
+.inner-addon .fa {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+.left-addon .fa  { left:  0px;}
+.right-addon .fa { right: 0px;}
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+#actions_td {
+    display:flex;
+}
+
+#edit_link {
+    margin-right:5px;
+}
+
+/* bootstrap-spinner på jumper-siden ved søgninger */
+.spinner-modal-lg .modal-dialog{
+    display: table;
+    position: relative;
+    margin: 0 auto;
+    top: calc(50% - 24px);
+}
+  
+.spinner-modal-lg .modal-dialog .modal-content{
+    background-color: transparent;
+    border: none;
+    width: 48px;
+}
+
+/* card der indeholder info om en trip i Jumper-sidens -søgeresultater */
+#trip-info-jumper-search-result {
+    flex-grow: 4;
+}
+
+/* en farve til rating-stjernerne */
+.checked {
+  color: orange;
+}
+
+/* autocomplete-design for søgning på adresser i Jumper-siden */
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 15px;
+  right: 15px;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+/* Google Map API - design i addTrips-modal */
+.pac-container {
+    background-color: #FFF;
+    z-index: 20;
+    position: fixed;
+    display: inline-block;
+    float: left;
+}
+.modal{
+    z-index: 20;   
+}
+.modal-backdrop{
+    z-index: 10;        
+}
+
+/* skjulte elementer */
+.hiddenElement {
+    display: none;
+}​

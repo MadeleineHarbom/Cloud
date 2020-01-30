@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>I'm a title, lol :D</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <style>
+      canvas {
+          -moz-user-select: none;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+      }
+    </style>
+</head>
+<body>
+<div style="width:60%">
+      <canvas id="myE3Chart" width="400" height="400"></canvas>
+    </div>
+    <button onclick="addData()">Hej</button>
+    <script>
+      var ctx = document.getElementById('myE3Chart').getContext('2d');
+      var scatterChart = new Chart(ctx, {
+          type: 'scatter',
+          data: {
+              datasets: [{
+                  label: 'Scatter Made',
+                  data: [{
+                      x: -10,
+                      y: 0
+                  }, {
+                      x: 0,
+                      y: 10
+                  }, {
+                      x: 10,
+                      y: 5
+                  }, {
+                	  x: 2,
+                	  y: 9
+                  }, {
+                	  x: 10,
+                	  y: 0
+                  }],
+                  pointBackgroundColor: ["#FF0000", "#4287f5", "#14c732", "#f2ef22", "#f20ac8"],
+                  pointBorderColor: ['#FF0000', '#FF0000', '#FF0000', '#FF0000', '#FF0000'],
+                  pointRadius: 7.5,
+              }]
+          },
+          options: {
+              scales: {
+                  xAxes: [{
+                      type: 'linear',
+                      position: 'bottom'
+                  }]
+              }
+          }
+      });
+
+      window.onload = function() {
+          console.log("Hello console world");
+          //alert("Hello alert world... please work");
+      }
+      
+      function addData() {
+    	  console.log("Thanks for clicking");
+    	  //alert("Thanks for clicking me");
+    	  var shart = scatterChart;
+    	  console.log(shart.config.data.datasets[0].data);
+    	  shart.config.data.datasets[0].data.push({x: 0, y: 0});
+    	  console.log(shart.config.data.datasets[0].pointBackgroundColor);
+    	  shart.config.data.datasets[0].pointBackgroundColor.push("#000000");
+    	  console.log(shart.config.data.datasets[0].pointBackgroundColor);
+    	  shart.update();
+    	  //scatterChart.data.datasets.data.append({6, 8});
+      } 
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+package made;
+
+import java.util.HashMap;
+
+
+public class LoginService {
+	
+	HashMap<String, String> users = new HashMap<>();
+	
+	public LoginService() {
+		Storage.users.put("made", "Madeleine");
+		Storage.users.put("slyngel", "Steffen");
+		Storage.users.put("nukku", "Bertil");
+		Storage.users.put("chico", "Thomas");
+	}
+	
+	public boolean authenticate(String userID, String password) {
+		if (password == null || password.length() < 1) {
+			System.out.print("\n not authenticated");
+			return false;
+		}
+		System.out.print("\n authenticated");
+		return true;
+	}
+	
+	public User getUser(String loginName) {
+		try {
+			User user = new User(loginName, users.get(loginName));
+			System.out.print(user.toString());
+		return user;
+		}
+		catch (Exception e) {
+			System.out.print("No user created");
+			return new User("faillogin", "failname");
+		}
+		
+		
+	}
+
+}
